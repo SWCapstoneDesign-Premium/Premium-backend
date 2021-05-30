@@ -1,32 +1,92 @@
 ActiveAdmin.register_page "Dashboard" do
-  menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
-
+  menu priority: 1
   content title: proc { I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+    columns do
+      column do
+        panel "최근 유저 승인요청 목록" do
+          table_for Tutor.approving.order("updated_at desc").limit(10) do
+            column("요청상태") { |user| status_tag I18n.t("activerecord.enum.user.status.#{user.status}"), class: 'green' }
+            column("이름") { |user| user.name }
+            column("이메일") { |user| link_to(user.email, admin_user_path(user)) }
+            column("링크") { |user| link_to("유저 정보 확인", admin_user_path(user)) }
+          end
+        end
       end
-    end
 
-    # Here is an example of a simple dashboard with columns and panels.
+      column do
+        panel "인기 많은 프로젝트" do
+          table_for Project.left_joins(:attendances).group(:id).order('COUNT(attendances.id) DESC').limit(10) do
+            column(:title)  { |project| link_to(project.title, admin_project_path(project)) }
+            column("카테고리") { |project| link_to(project.category.title, admin_category_path(project.category))}
+            column("참여자 수")  { |project| status_tag "#{project.attendances.size}명" ,class: "red" }
+          end
+        end
+      end
+    end # columns
+
+
+    columns do
+      column do
+        # div do
+        #   br
+        #   text_node %{<iframe src="https://rpm.newrelic.com/public/charts/6VooNO2hKWB"
+        #                       width="500" height="300" scrolling="no" frameborder="no">
+        #               </iframe>}.html_safe
+        # end
+        panel "열정많은 학생 순위" do
+          table_for Tutee.left_joins(:attendances).group(:id).order('COUNT(attendances.id) DESC').limit(10) do
+            column("이름") { |user| user.name }
+            column("이메일") { |user| link_to(user.email, admin_user_path(user)) }
+            column("링크") { |user| link_to("유저 정보 확인", admin_user_path(user)) }
+            column("참여 프로젝트 개수") { |user| status_tag "#{user.attendances.size}개 참여중", class: "red"}
+          end
+        end
+      end
+
+      column do
+        panel "인기많은 튜터 순위" do
+          table_for Tutor.order('likes_count DESC').limit(10) do
+            column("이름") { |user| user.name }
+            column("이메일") { |user| link_to(user.email, admin_user_path(user)) }
+            column("링크") { |user| link_to("유저 정보 확인", admin_user_path(user)) }
+            column("좋아요 개수") { |user| status_tag "#{user.likes_count}개", class: "red"}
+          end
+        end
+      end
+    end # columns
+
+    # Define your dashboard sections here. Each block will be
+    # rendered on the dashboard in the context of the view. So just
+    # return the content which you would like to display.
+
+    # The dashboard is organized in rows and columns, where each row
+    # divides the space for its child columns equally.
+
+    # To start a new row, open a new 'columns' block, and to start a
+    # new column, open a new 'colum' block. That way, you can exactly
+    # define the position for each content div.
+
+    # == Simple Dashboard Column
+    # Here is an example of a simple dashboard column
     #
-    # columns do
     #   column do
     #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
+    #       content_tag :ul do
+    #         Post.recent(5).collect do |post|
+    #           content_tag(:li, link_to(post.title, admin_post_path(post)))
+    #         end.join.html_safe
     #       end
     #     end
     #   end
 
+    # == Render Partials
+    # The block is rendererd within the context of the view, so you can
+    # easily render a partial rather than build content in ruby.
+    #
     #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
+    #     panel "Recent Posts" do
+    #       render 'recent_posts' # => this will render /app/views/admin/dashboard/_recent_posts.html.erb
     #     end
     #   end
-    # end
   end # content
 end

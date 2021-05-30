@@ -15,9 +15,34 @@ $primary-color: #00b300;
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //
-//   .status_tag { background: #6090DB; }
+.status_tag {
+  background: darken($secondary-color, 15%);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 5px 2px 5px;
+  font-size: 0.8em;
 
-.user-index-image{
+  &.ok,
+  &.published,
+  &.complete,
+  &.completed,
+  &.green {
+    background: #8daa92;
+  }
+  &.warn,
+  &.warning,
+  &.orange {
+    background: #e29b20;
+  }
+  &.error,
+  &.errored,
+  &.red {
+    background: #ff8080;
+  }
+}
+
+.user-index-image {
   width: 100px;
   height: 100px;
 }
