@@ -1,5 +1,5 @@
 class AuthSerializer < Panko::Serializer
-  attributes :id, :description, :authable_type, :authable_id, :created_at, :target
+  attributes :id, :description, :authable_type, :authable_id, :created_at, :target, :status
 	
 	#belongs_to :tutor, serializer: UserSerializer
 	# has_one :tutee, serializer: UserSerializer 

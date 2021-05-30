@@ -29,8 +29,8 @@ class AuthsController < ApiController
       # authid, projectid, tuteeid
       @target = Attendance.find_by(tutee_id: params[:tutee_id], project_id: params[:project_id])
       @auth = @target&.auths&.find_by(id: params[:id])
-      @auth.update auth_params unless check_auth
-      render json: serializer(@auth, AuthSerailizer), status: :ok
+      @auth.update(auth_params) unless check_auth
+      render json: serializer(@auth, AuthSerializer), status: :ok
     rescue => exception
       render json: {errors: "인증할 정보가 없습니다."}, status: :bad_request
     end
