@@ -16,7 +16,7 @@ class UsersController < ApiController
   def update
     begin
       @user.update user_params
-      render json: serializer(@user, UserSerializer, [:id,:name, :email, :type]), status: :ok
+      render json: serializer(@user, UserSerializer, [:id, :name, :email, :type]), status: :ok
     rescue => exception
       render json: {error: @user&.errors&.full_messages&.first}, status: :bad_request
     end
