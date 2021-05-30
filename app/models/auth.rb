@@ -7,6 +7,9 @@ class Auth < ApplicationRecord
 
   belongs_to :authable, polymorphic: true, optional: true
 
+  enum status: %i(rejected confirm)
+  ransacker :status, formatter: proc {|v| statuses[v]}
+
 	delegate :targets, to: :authable, allow_nil: true
 	before_create :check_user_auth
 

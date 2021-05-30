@@ -2,7 +2,7 @@ class AuthsController < ApiController
   before_action :authorize_check_request
   before_action :check_user_type, only: %i(update)
   before_action :load_project, only: %i(create update)
-  before_action :load_target, only: %i(create update)
+  before_action :load_target, only: %i(create)
   
   def index
     begin
@@ -26,11 +26,13 @@ class AuthsController < ApiController
 
   def update
     begin
-      @auth = @target.auths.find_by(id: params[:id])
+      # authid, projectid, tuteeid
+      @target = Attendance.find_by(tutee_id: params[:tutee_id], project_id: params[:project_id])
+      @auth = @target&.auths&.find_by(id: params[:id])
       @auth.update auth_params unless check_auth
       render json: serializer(@auth, AuthSerailizer), status: :ok
     rescue => exception
-      render json: {errors: @auth&.errors&.full_messages&.first}, status: :bad_request
+      render json: {errors: "인증할 정보가 없습니다."}, status: :bad_request
     end
   end
 
