@@ -32,3 +32,4 @@ dump.rdb
 /public/uploads/*
 /config/application.yml
 /config/deploy/production.rb
+/public/assets/*
