@@ -18,12 +18,18 @@ class Book < ApplicationRecord
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
+
+    wait = Selenium::WebDriver::Wait.new(timeout: 3) # dome loading을 위해 3초 대기
     
     @browser = Selenium::WebDriver.for :chrome, options: options
+
     
     @browser.navigate().to self.url
+
+    wait.until { @browser.find_element(css: '#tabContent > .tab_body > .info_section > .coll_tit') }
     
     @content = @browser.find_elements(css: "#tabContent > .tab_body > .info_section > .coll_tit")
+
   
     @content.each do |dom|
       if dom.find_element(css: "h3.tit").text == "목차"
