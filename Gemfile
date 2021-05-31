@@ -64,7 +64,7 @@ gem 'rubocop', require: false
 gem 'faker'
 gem "paranoia"
 gem 'omniauth-apple'
-
+gem 'bootstrap', '~> 4.3.1'
 gem 'httparty'
 # gem 'iamport'
 group :development, :test do
