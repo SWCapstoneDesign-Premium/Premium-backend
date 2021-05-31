@@ -36,7 +36,7 @@ puts "\n"
 puts "Execute git pull"
 if options[:skip_pull]
   puts "Skip pull"
-elsif options[:branch_name].present?
+elsif !options[:branch_name].to_s.eql?("")
   str = "git pull origin '#{options[:branch_name]}'"
   system(str)
 else
@@ -60,7 +60,7 @@ system("git commit -m '#{commit_msg}'")
 
 puts "git push"
 
-if options[:branch_name].present?
+if !options[:branch_name].to_s.eql?("")
   str2= "git push origin '#{options[:branch_name]}'"
 else
   puts "Enter branch to push"
