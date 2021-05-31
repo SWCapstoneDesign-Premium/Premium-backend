@@ -167,5 +167,5 @@ $ rails s
 
 ## 5. 배포
 
-- [따숲](www.ddasup.ga)
-- [따숲 관리자](www.ddasup.ga/admin)
+- [따숲](https://www.ddasup.ga)
+- [따숲 관리자](https://www.ddasup.ga/admin)
