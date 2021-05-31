@@ -42,7 +42,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-
       column do
         panel "인기많은 튜터 순위" do
           table_for Tutor.order('likes_count DESC').limit(10) do

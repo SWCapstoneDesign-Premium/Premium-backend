@@ -4,4 +4,8 @@ class UserSerializer < Panko::Serializer
   # def likable_ids
   #   context[:likable_ids]
   # end
+  
+  def image
+    object.image_path
+  end
 end

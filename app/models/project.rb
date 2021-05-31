@@ -122,8 +122,8 @@ class Project < ApplicationRecord
   def refund_all_tutties
     if self.attendances.yet.present?
       self.attendances.yet.each do | attendance |
-        # auth 물어보고 로직 재설정하기, authable이 뭐지? 뭐뭐가 될 수 있는 거지?
-        authentication_rate = attendance.auths.count.to_f / self.duration
+        # 인증 중 확인받은 것의 갯수 세기
+        authentication_rate = attendance.auths.confirm.count.to_f / self.duration
         percentage = authentication_rate * 100
 
         @amount = case percentage
@@ -133,6 +133,7 @@ class Project < ApplicationRecord
           else -1
         end
 
+        # 카카오페이는 부분환불을 지원하지 않음
         if @amount > 0
           code, message, response = Iamport.iamport_cancel(attendance.imp_uid, @amount)
           case code 
