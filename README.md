@@ -4,6 +4,12 @@
   <img src="./appicon/icon2.png" width="200" height="200">
   <img src="./appicon/icon1.png" width="200" height="200">
 </div>
+  
+- [About 따숲](https://www.ddasup.ga)
+- [따숲 관리자 페이지](https://www.ddasup.ga/admin)
+
+
+
 
 ## 목차
 
@@ -12,7 +18,7 @@
 - [3. 기능 소개](#3-기능-소개)
 - [4. 3rd-party API](#4-3rd-party-API)
 - [5. Getting Started](#5-Getting-Started)
-- [6. 배포](#6-배포)
+
 
 
 
@@ -189,10 +195,3 @@ $ rails db:seed
 # 서버 실행
 $ rails s
 ```
-
-
-
-## 6. 배포
-
-- [따숲](https://www.ddasup.ga)
-- [따숲 관리자](https://www.ddasup.ga/admin)
