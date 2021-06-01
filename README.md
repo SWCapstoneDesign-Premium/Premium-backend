@@ -7,11 +7,11 @@
 
 </div>
 
-- [1. 개발 환경](##1.-개발-환경)
-- [2. 기능 소개](##2.-기능-소개)
-- [3. 3rd-party API](##3.-3rd-party-API)
-- [4. Getting Started](##4.-Getting-Started)
-- [5. 배포](##5.-배포)
+- [1. 개발 환경](#1.-개발-환경)
+- [2. 기능 소개](#2.-기능-소개)
+- [3. 3rd-party API](#3.-3rd-party-API)
+- [4. Getting Started](#4.-Getting-Started)
+- [5. 배포](#5.-배포)
 
 ## 1. 개발 환경
 
