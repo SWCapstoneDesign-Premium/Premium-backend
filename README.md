@@ -5,13 +5,36 @@
   <img src="./appicon/icon1.png" width="200" height="200">
 </div>
 
-- [1. 개발 환경](#1-개발-환경)
-- [2. 기능 소개](#2-기능-소개)
-- [3. 3rd-party API](#3-3rd-party-API)
-- [4. Getting Started](#4-Getting-Started)
-- [5. 배포](#5-배포)
+## 목차
 
-## 1. 개발 환경
+- [1. Contributer](#1-Contributer)
+- [2. 개발 환경](#2-개발-환경)
+- [3. 기능 소개](#3-기능-소개)
+- [4. 3rd-party API](#4-3rd-party-API)
+- [5. Getting Started](#5-Getting-Started)
+- [6. 배포](#6-배포)
+
+
+
+<br>
+
+
+
+## 1. Contributer
+
+<table align="center">
+  <tr>
+    <td align="center"><a href="https://github.com/Yoon-Haeng-Heo"><img src="https://avatars.githubusercontent.com/u/62371656?v=4?s=200" width="200px;" alt=""/><br /><sub><b>YoonHaeng Heo</b></sub></a><br /><sub>Deploy, OAuth, Development</sub></td>
+    <td align="center"><a href="https://github.com/Itsbeenalongday"><img src="https://avatars.githubusercontent.com/u/48282185?v=4?s=200" width="200px;" alt=""/><br /><sub><b>SungMin Yoo</b></sub></a><br /><sub>Crawling, Algorithm, Development </sub></td>
+  </tr>
+</table>
+
+
+
+
+
+
+## 2. 개발 환경
 
 ```bash
 Rails version             6.0.3.4
@@ -26,7 +49,9 @@ nginx version             nginx/1.14.0 (Ubuntu 18.04 LTS)
 Phusion Passenger(R)      6.0.8
 ```
 
-## 2. 기능 소개
+
+
+## 3. 기능 소개
 
 우리는 공부를 비교적 잘하는 멘토들이 공부에 어려움을 겪거나 발전을 원하는 튜티들을 자신이 공부했던 패턴에 따라 학습시키며,  
 튜티들이 해당 패턴에 적응하여, 성적향상을 이루고, 프로젝트 이후 자기주도학습으로 유도해주는 프로젝트를 구상하였습니다.
@@ -55,7 +80,9 @@ Phusion Passenger(R)      6.0.8
 
 6. 서비스 관리자는 사용자들이 학교 인증을 하여 튜티자격을 요청하면, 이를 확인하고 튜터 자격을 부여할 수 있습니다.
 
-## 3. 3rd party API
+
+
+## 4. 3rd party API
 
 ### 아래는 프로젝트에서 사용된 외부 API 목록입니다
 
@@ -64,7 +91,7 @@ Phusion Passenger(R)      6.0.8
 - [Kakao Developer Omniauth](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api)
 - [Apple Developer Omniauth](https://developer.apple.com/kr/sign-in-with-apple/get-started/)
 
-## 4. Getting Started
+## 5. Getting Started
 
 1. 프로젝트 설정
    - application.yml과 database.yml을 만들고 설정해야합니다.
@@ -163,7 +190,9 @@ $ rails db:seed
 $ rails s
 ```
 
-## 5. 배포
+
+
+## 6. 배포
 
 - [따숲](https://www.ddasup.ga)
 - [따숲 관리자](https://www.ddasup.ga/admin)
