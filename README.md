@@ -1,10 +1,8 @@
 # About Premium Server
 
 <div align="center">
-
-  <img src="./appicon/icon1.png" style="width:30px;height:30px;">
-  <!-- <img src="./appicon/icon2.png" style="width:200px"> -->
-
+  <img src="./appicon/icon2.png" width="200" height="200">
+  <img src="./appicon/icon1.png" width="200" height="200">
 </div>
 
 - [1. 개발 환경](#1-개발-환경)
