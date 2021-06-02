@@ -43,7 +43,7 @@ class Book < ApplicationRecord
     chapters = []
 
     @list_content.split("\n") do |chapter|
-      chapters << Chapter.new(title: chapter, book: self) if chapter.present? # 띄어쓰기때문에 공백이 생김, 때문에 공백일 경우는 만들지 않도록 함
+      chapters << {title: chapter, book: self} if chapter.present? # 띄어쓰기때문에 공백이 생김, 때문에 공백일 경우는 만들지 않도록 함
     end
 
     # bulk insert

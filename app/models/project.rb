@@ -38,7 +38,7 @@ class Project < ApplicationRecord
     end
     
     begin
-      @chapters = @book.chapters.joins(:options)
+      @chapters = @book.chapters.order('id asc').joins(:options)
     rescue => exception
       msg = "책에 목차가 존재하지 않습니다."
       puts msg
