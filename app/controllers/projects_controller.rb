@@ -19,7 +19,7 @@ class ProjectsController < ApiController
 
 	def create
 		begin
-			project = @current_user.projects.create(project_params)
+			project = @current_user.projects.create(project_params) unless @current_user.projects.present?
 			render json: serializer(project, ProjectSerializer) 
 		rescue => exception
 			render json: {error: project&.errors&.full_messages&.first}, status: :bad_request
