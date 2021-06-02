@@ -7,6 +7,7 @@ class User < ApplicationRecord
 	include ImageUrl
 	include Imageable
   include Likable
+  
   has_many :likes, dependent: :destroy
   
 	PERMIT_COLUMNS = [:email, :password, :image, :phone, :name, :type, :info, :status]
