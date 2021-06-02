@@ -35,10 +35,10 @@ class BooksController < ApiController
   end
 
   def get_list # 목차 가져오기
-    title = params.dig(:book, :title) 
-    book = Book.find_by(title: title)
+    isbn = params.dig(:book, :isbn)
+    book = Book.find_by(isbn: isbn)
     book.crawl_book_index if book.chapters.blank?
-    render json: serializer(book, BookSerializer, { chapter: Book.find_by(title: title).chapters} ), status: :ok
+    render json: serializer(book, BookSerializer, { chapter: Book.find_by(isbn: isbn).chapters} ), status: :ok
   end
 
   private
