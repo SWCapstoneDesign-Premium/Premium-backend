@@ -18,6 +18,9 @@ class Project < ApplicationRecord
 
   enum chat: %i(disable able)
 
+  enum status: %i(ready running done)
+  ransacker :status, formatter: proc {|v| statues[v]}
+
   def set_data_before_make_schedule
     @start_at, @end_at = DateTime.now, DateTime.now
     msg = ''
