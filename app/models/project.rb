@@ -4,8 +4,6 @@ class Project < ApplicationRecord
   include Imageable
   include Iamport
 
-  acts_as_paranoid
-  
   PERMIT_COLUMNS = %i(description deposit image title started_at duration experience_period category_id required_time review_weight mission book_id rest chat)
   
   has_many :attendances, dependent: :nullify

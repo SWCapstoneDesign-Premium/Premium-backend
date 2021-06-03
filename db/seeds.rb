@@ -12,7 +12,7 @@ p "어드민 유저 생성"
 
 def generate_user
   %w(Tutor Tutee).each do |object|
-    5.times do |i|
+    20.times do |i|
       object.constantize.create(
         email: "#{object}#{i+1}@test.com", 
         password: "password", 
@@ -26,9 +26,9 @@ def generate_user
 end
 
 def generate_project
-  5.times.each do |i|
+  20.times.each do |i|
     project = Project.create(
-      tutor_id: Tutor.ids.shuffle.first,
+      tutor_id: Tutor.first.id + i,
       description: "project code name project_#{i}",
       deposit: 15000,
       image: File.open("public/image/seedImage/seed#{rand(1..10)}.jpg"),
