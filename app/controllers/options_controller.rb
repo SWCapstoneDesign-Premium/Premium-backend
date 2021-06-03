@@ -7,7 +7,8 @@ class OptionsController < ApiController
       tutor = Project.find_by(id: params[:project_id])&.tutor 
       option = tutor.present? ? tutor.options.includes(:chapter).ransack(start_at_lteq: DateTime.now, end_at_gteq: DateTime.now, m: "and").result.first : nil
       title = option.present? ? option&.chapter&.title : ""
-      render json: { options: tutor&.options, chapter: title }
+      render json: each_serializer(tutor&.options, OptionSerializer)
+      # render json: { options: each_serializer(tutor&.options, OptionSerializer), chapter: title }
     rescue => exception
       render json: {error: "일정이 생성되지 않은 상태입니다."}, status: :not_found
     end

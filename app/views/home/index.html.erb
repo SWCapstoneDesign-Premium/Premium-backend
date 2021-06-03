@@ -15,7 +15,11 @@
 
 	<div id="fh5co-hero-wrapper">
 		<nav class="container navbar navbar-expand-lg main-navbar-nav navbar-light">
-			<a class="navbar-brand" href="">DDASUP</a>
+			<a class="navbar-brand" href="">
+        <img src="image/iconFix.png" alt="" style="width:80px;height:80px;">
+        <span style="font-size:1.3rem;color:black;font-weight:bold;">따숲</span>
+        <span style="font-size:0.6rem;color:black;font-weight:bold;">- 따라하는 스터디 프로젝트</span>
+      </a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -45,10 +49,10 @@
 
 		<div class="container fh5co-hero-inner">
 			<h1 class="animated fadeIn wow" data-wow-delay="0.4s">성공한 사람들의 공부법을 따라하자</h1>
-			<p class="animated fadeIn wow" data-wow-delay="0.67s" style="font-size:1.0rem;">따라하면서 익히고 배우는 공부법</p>
+			<p class="animated fadeIn wow" data-wow-delay="0.67s" style="font-size:1.0rem;">공부 의지가 없거나 다른 사람들의 공부법이 궁금한 학생들에게 학습에 대한 동기부여를 위한 어플리케이션</p>
 			<button class="btn btn-md download-btn-first wow fadeInLeft animated" data-wow-delay="0.85s" onclick="goTo('#fh5co-download');return false;">Download</button>
 			<button class="btn btn-md features-btn-first animated fadeInLeft wow" data-wow-delay="0.95s" onclick="goTo('#fh5co-features');return false;">Features</button>
-			<img class="fh5co-hero-smartphone animated fadeInRight wow" data-wow-delay="1s" src="image/Home.jpeg" alt="Smartphone">
+			<img class="fh5co-hero-smartphone animated fadeInRight wow" data-wow-delay="1s" src="image/mainImage.jpeg" alt="Smartphone">
 		</div>
 
 	</div> <!-- first section wrapper -->
@@ -58,29 +62,41 @@
 													 ADVANTAGES
 		 ========================================================================================================== -->
 
-	<div class="fh5co-advantages-outer">
+	<div class="fh5co-advantages-outer mt-4">
 		<div class="container">
-			<h1 class="second-title"><span class="span-perfect">Perfect</span> <span class="span-features">Features</span></h1>
-			<small>Only necessary</small>
+			<h1 class="second-title"><span class="span-perfect">따숲의 주요 기능</span></h1>
+			<small>주요 기능입니다</small>
 
 			<div class="row fh5co-advantages-grid-columns wow animated fadeIn" data-wow-delay="0.36s">
 
-				<div class="col-sm-4">
-					<img class="grid-image" src="image/icon-1.png" alt="Icon-1">
-					<h1 class="grid-title">Usability</h1>
-					<p class="grid-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem cupiditate.</p>
+				<div class="col-sm-4 d-flex">
+          <div class="col-4">
+            <i class="grid-fa far fa-calendar-check" style="font-size:60px;"></i>
+          </div>
+          <div class="col-8">
+            <h1 class="grid-title">차별화된 일정 생성</h1>
+            <p class="grid-desc w-100">날짜를 기준으로 단순 나누기가 아닌 튜터가 설정하는 옵션에 맞게 일정 생성</p>
+          </div>
 				</div>
 
-				<div class="col-sm-4">
-					<img class="grid-image" src="image/icon-2.png" alt="Icon-2">
-					<h1 class="grid-title">Parallax Effect</h1>
-					<p class="grid-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem cupiditate.</p>
+				<div class="col-sm-4 d-flex">
+          <div class="col-4">
+            <i class="grid-fa far fa-id-card" style="font-size:60px;"></i>
+          </div>
+          <div class="col-8">
+            <h1 class="grid-title">인증 제도</h1>
+            <p class="grid-desc w-100">튜터는 튜터로서의 자격을 인증하고 튜티는 학습에 대한 일일 인증 진행</p>
+          </div>
 				</div>
 
-				<div class="col-sm-4">
-					<img class="grid-image" src="image/icon-3.png" alt="Icon-3">
-					<h1 class="grid-title">Unlimited Colors</h1>
-					<p class="grid-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem cupiditate.</p>
+				<div class="col-sm-4 d-flex">
+          <div class="col-4">
+            <i class="grid-fa fas fa-hand-holding-usd" style="font-size:60px;"></i>
+          </div>
+          <div class="col-8">
+            <h1 class="grid-title">보증금 제도</h1>
+            <p class="grid-desc w-100">동기 부여를 위한 보증금 제도 및 체험 기간 도입</p>
+          </div>
 				</div>
 
 
@@ -94,15 +110,18 @@
 		 ========================================================================================================== -->
 
 	<div class="fh5co-slider-outer wow fadeIn" data-wow-delay="0.36s">
-		<h1>SIMPLE WIDGETS</h1>
-		<small>Drag and Drop</small>
+		<h1>주요 화면</h1>
+		<small>프로젝트 인증 및 주 화면입니다</small>
 		<div class="container fh5co-slider-inner">
 
 			<div class="owl-carousel owl-theme">
-				<div class="item"><img src="<%= root_url + "image/smartphone-2.png" %>" alt=""></div>
-				<div class="item"><img src="<%= root_url + "image/smartphone-2.png" %>" alt=""></div>
-				<div class="item"><img src="image/iphone.png" alt=""></div>
-				<div class="item"><img src="image/smartphone-2.png" alt=""></div>
+				<div class="item"><img src="image/AuthList.png"" alt=""></div>
+				<div class="item"><img src="image/Home.png" alt=""></div>
+				<div class="item"><img src="image/Profile.png" alt=""></div>
+				<div class="item"><img src="image/Search.png" alt=""></div>
+				<div class="item"><img src="image/example1.png" alt=""></div>
+				<div class="item"><img src="image/example2.png" alt=""></div>
+				<div class="item"><img src="image/example3.png" alt=""></div>
 
 			</div>
 
@@ -115,44 +134,39 @@
 		 ========================================================================================================== -->
 
 	<div class="curved-bg-div wow animated fadeIn" data-wow-delay="0.15s"></div>
-	<div id="fh5co-features" class="fh5co-features-outer">
+	<div id="fh5co-features" class="fh5co-features-outer mt-2">
 		<div class="container">
 
 			<div class="row fh5co-features-grid-columns">
 
 				<div class="col-sm-6 in-order-1 wow animated fadeInLeft" data-wow-delay="0.22s">
 					<div class="col-sm-image-container">
-						<img class="img-float-left" src="image/smartphone-1.png" alt="smartphone-1">
-						<span class="span-new">NEW</span>
-						<span class="span-free">Free</span>
+						<img class="img-float-left" src="image/Projects.png" alt="smartphone-1">
 					</div>
 				</div>
 
 				<div class="col-sm-6 in-order-2 sm-6-content wow animated fadeInRight" data-wow-delay="0.22s">
-					<h1>New Features</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor iste beatae ad adipisci, fugiat dignissimos pariatur, dolore nemo suscipit cum nisi earum voluptates nulla! </p>
-					<span class="circle circle-first"><i class="fab fa-instagram"></i></span>
-					<span class="circle circle-middle"><i class="fab fa-facebook"></i></span>
-					<span class="circle circle-last"><i class="fab fa-github"></i></span>
+					<h1>일정 자동 생성</h1>
+					<p>일정을 쪽수로 단순 나누기가 아닌 따숲만의 방식으로 여러가지 선택지를 고려한 옵션으로 일정을 생성하고 학습을 진행합니다</p>
+					<span class="circle circle-first"><i class="far fa-calendar-alt"></i></span>
+					<span class="circle circle-middle"><i class="fas fa-chalkboard-teacher"></i></span>
+					<span class="circle circle-last"><i class="fas fa-book"></i></span>
 				</div>
-
 				<div class="col-sm-6 in-order-3 sm-6-content wow animated fadeInLeft" data-wow-delay="0.22s">
-					<h1>REAL-TIME STATISTICS</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor iste beatae ad adipisci, fugiat dignissimos pariatur, dolore nemo suscipit cum nisi earum voluptates nulla! </p>
+					<h1>인증을 활용한 관리</h1>
+					<p>튜터는 회원 가입시 학교 인증으로 신뢰도를 높이고, 튜티는 참여하는 프로젝트를 일일 인증으로 학습 인증을 진행합니다</p>
 					<span class="circle circle-first"><i class="fas fa-star"></i></span>
 					<span class="circle circle-middle"><i class="far fa-star"></i></span>
 					<span class="circle circle-last"><i class="far fa-thumbs-up"></i></span>
 				</div>
 
 				<div class="col-sm-6 in-order-4 wow animated fadeInRight" data-wow-delay="0.22s">
-					<img class="img-float-right" src="image/smartphone-2.png" alt="smartphone-2">
+					<img class="img-float-right" src="image/Auths1.png" alt="">
 				</div>
 
-				<div class="col-sm-6 in-order-5 wow animated fadeInLeft" data-wow-delay="0.22s">
+<!--				<div class="col-sm-6 in-order-5 wow animated fadeInLeft" data-wow-delay="0.22s">
 					<div class="col-sm-image-container">
-						<img class="img-float-left" src="image/smartphone-2.png" alt="smartphone-3">
-						<span class="span-data">DATA</span>
-						<span class="span-percent">100%</span>
+						<img class="img-float-left" src="image/Profile.png" alt="smartphone-3">
 					</div>
 				</div>
 				<div class="col-sm-6 in-order-6 sm-6-content wow animated fadeInRight" data-wow-delay="0.22s">
@@ -162,7 +176,7 @@
 					<span class="circle circle-middle"><i class="fas fa-forward"></i></span>
 					<span class="circle circle-last"><i class="fab fa-github"></i></span>
 
-				</div>
+				</div>-->
 
 
 
@@ -177,9 +191,9 @@
 	<!-- ==========================================================================================================
 													  REVIEWS
 		 ========================================================================================================== -->
-
+<!--
 	<div id="fh5co-reviews" class="fh5co-reviews-outer">
-		<h1>What people are saying</h1>
+		<h1></h1>
 		<small>Reviews</small>
 		<div class="container fh5co-reviews-inner">
 			<div class="row justify-content-center">
@@ -198,7 +212,7 @@
 			</div>
 
 		</div>
-	</div>
+	</div>-->
 	
 
 	<!-- ==========================================================================================================
@@ -211,7 +225,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<h1>How to download the app?</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque suscipit, similique animi saepe, ipsam itaque, tempore minus maxime pariatur error unde fugit tenetur.</p>
+						<p>출시 전입니다.</p>
 						<a class="wow fadeIn animated" data-wow-delay="0.25s" href="#"><img class="app-store-btn" src="image/app-store-icon.png" alt="App Store Icon"></a>
 						<a class="wow fadeIn animated" data-wow-delay="0.67s" href="#"><img class="google-play-btn" src="image/google-play-icon.png" alt="Google Play Icon"></a>
 					</div>
@@ -230,7 +244,7 @@
 
 			<div class="footer-three-grid wow fadeIn animated" data-wow-delay="0.66s">
 				<div class="column-1-3">
-					<h1>App</h1>
+					<h1>따숲</h1>
 				</div>
 				<div class="column-2-3">
 					<nav class="footer-nav">

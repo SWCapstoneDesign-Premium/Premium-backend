@@ -23,8 +23,16 @@ class UsersController < ApiController
   end
 
   def destroy
-    result = (@user.destroy) ? [@user, :ok] : [@user.destroy.errors.full_messages, ""]
-    send_response(result)
+    begin
+      if !@user.projects.present? && current_user.eql?(@user)
+        @user.destroy 
+        render json: {result: "성공적으로 삭제되었습니다"}, status: :ok
+      else
+        return render json: {error: "정상적으로 삭제되지 않았습니다."}, status: :bad_request
+      end
+    rescue => exception
+      render json: {error: "정상적으로 삭제되지 않았습니다. 다시 시도해 주세요"}, status: :bad_request
+    end
   end
 
 

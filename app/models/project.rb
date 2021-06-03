@@ -4,8 +4,6 @@ class Project < ApplicationRecord
   include Imageable
   include Iamport
 
-  acts_as_paranoid
-  
   PERMIT_COLUMNS = %i(description deposit image title started_at duration experience_period category_id required_time review_weight mission book_id rest chat)
   
   has_many :attendances, dependent: :nullify
@@ -19,6 +17,10 @@ class Project < ApplicationRecord
   ransacker :rest, formatter: proc {|v| rests[v]}
 
   enum chat: %i(disable able)
+
+  enum status: %i(ready running done)
+
+  ransacker :status, formatter: proc {|v| statues[v]}
 
   def set_data_before_make_schedule
     @start_at, @end_at = DateTime.now, DateTime.now
@@ -38,7 +40,7 @@ class Project < ApplicationRecord
     end
     
     begin
-      @chapters = @book.chapters.joins(:options)
+      @chapters = @book.chapters.order('id asc').joins(:options)
     rescue => exception
       msg = "책에 목차가 존재하지 않습니다."
       puts msg
@@ -141,10 +143,12 @@ class Project < ApplicationRecord
             when true
               Rails.logger.info message
               attendance.complete!
+              self.done!
             # 이미 환급된 경우
             when false
               Rails.logger.info message
               attendance.complete!
+              self.done!
             # 나머지
             else
               Rails.logger.info "환급과정에서 오류가 발생하였습니다.(부분환불 미지원 PG 등)"

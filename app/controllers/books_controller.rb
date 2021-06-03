@@ -9,7 +9,7 @@ class BooksController < ApiController
   
   def create
     begin
-      @book = Book.find_or_create_by(title: book_params[:title])
+      @book = Book.find_or_create_by(isbn: book_params[:isbn])
       @book.update(book_params)
       render json: serializer(@book, BookSerializer), status: :ok
     rescue => exception
@@ -38,7 +38,7 @@ class BooksController < ApiController
     isbn = params.dig(:book, :isbn)
     book = Book.find_by(isbn: isbn)
     book.crawl_book_index if book.chapters.blank?
-    render json: serializer(book, BookSerializer, { chapter: Book.find_by(isbn: isbn).chapters} ), status: :ok
+    render json: serializer(book, BookSerializer, { chapter: Book.find_by(isbn: isbn).chapters.order('id asc') } ), status: :ok
   end
 
   private

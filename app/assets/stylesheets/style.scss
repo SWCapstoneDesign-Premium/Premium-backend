@@ -91,7 +91,7 @@ html {
 }
 
 .fh5co-hero-inner {
-  margin-top: 110px;
+  margin-top: 70px;
   position: relative;
 }
 .fh5co-hero-inner > h1 {
@@ -167,6 +167,15 @@ html {
   top: 1px;
   color: #648cff;
 }
+.fh5co-advantages-outer .fh5co-advantages-grid-columns .col-sm-4 .grid-fa {
+  width: 30%;
+  float: left;
+  padding-right: 30px;
+  position: relative;
+  top: 1px;
+  color: #648cff;
+}
+
 .fh5co-advantages-outer .fh5co-advantages-grid-columns .col-sm-4 .grid-title {
   float: left;
   font-size: 20px;
@@ -176,7 +185,6 @@ html {
   float: right;
   font-size: 13px;
   padding-right: 7%;
-  width: 70%;
   color: #c7c7c7;
   margin-top: 10px;
   line-height: 1.87em;
