@@ -19,6 +19,7 @@ class Project < ApplicationRecord
   enum chat: %i(disable able)
 
   enum status: %i(ready running done)
+
   ransacker :status, formatter: proc {|v| statues[v]}
 
   def set_data_before_make_schedule
@@ -142,10 +143,12 @@ class Project < ApplicationRecord
             when true
               Rails.logger.info message
               attendance.complete!
+              self.done!
             # 이미 환급된 경우
             when false
               Rails.logger.info message
               attendance.complete!
+              self.done!
             # 나머지
             else
               Rails.logger.info "환급과정에서 오류가 발생하였습니다.(부분환불 미지원 PG 등)"

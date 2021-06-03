@@ -19,7 +19,8 @@ class ProjectsController < ApiController
 
 	def create
 		begin
-			project = @current_user.projects.create(project_params) unless @current_user.projects.present?
+      # 프로젝트는 동시에 하나만 진행 가능함
+			project = @current_user.projects.create(project_params) unless @current_user.projects.not_done.present?
 			render json: serializer(project, ProjectSerializer) 
 		rescue => exception
 			render json: {error: project&.errors&.full_messages&.first}, status: :bad_request

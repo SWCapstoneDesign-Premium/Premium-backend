@@ -25,6 +25,7 @@ class Attendance < ApplicationRecord
     if code.zero? && self.unpaid? && self.trial?
       self.paid!
       self.full!
+      self.project.running!
     end
   end
 
