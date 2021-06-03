@@ -19,7 +19,7 @@ class Book < ApplicationRecord
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
 
-    wait = Selenium::WebDriver::Wait.new(timeout: 3) # dome loading을 위해 3초 대기
+    wait = Selenium::WebDriver::Wait.new(timeout: 10) # dom loading을 위해 3초 대기
     
     @browser = Selenium::WebDriver.for :chrome, options: options
 
@@ -43,6 +43,7 @@ class Book < ApplicationRecord
     chapters = []
 
     @list_content.split("\n") do |chapter|
+      puts chapter
       chapters << Chapter.new(title: chapter, book: self) if chapter.present? # 띄어쓰기때문에 공백이 생김, 때문에 공백일 경우는 만들지 않도록 함
     end
 
