@@ -89,7 +89,5 @@ jobs:
         AWS_ACCESS_SECRET_KEY: ${{ secrets.AWS_ACCESS_SECRET_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_S3_END_POINT: ${{ secrets.AWS_S3_END_POINT }}
-      run: |
-        bundle exec rails assets:clean
-        bundle exec rails assets:precompile
+      run: 
         bundle exec rspec spec/requests
