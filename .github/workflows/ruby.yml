@@ -83,6 +83,7 @@ jobs:
         
     - name: Asset precompile
       run: |
+        bundle exec rails assets:clean
         bundle exec rails assets:precompile
         
     - name: Run tests
