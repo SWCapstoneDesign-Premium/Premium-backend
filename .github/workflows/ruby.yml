@@ -80,7 +80,11 @@ jobs:
         wget -q -O tmp.zip https://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip
         unzip tmp.zip && rm -rf tmp.zip
         sudo mv chromedriver /usr/local/bin
-        
+    - name: Run asset precompile
+      run: |
+        bundle exec rails assets:clean
+        bundle exec rails assets:precompile
+
     - name: Run tests
       env:
         REDIS_HOST: localhost
@@ -89,5 +93,4 @@ jobs:
         AWS_ACCESS_SECRET_KEY: ${{ secrets.AWS_ACCESS_SECRET_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_S3_END_POINT: ${{ secrets.AWS_S3_END_POINT }}
-      run: 
-        bundle exec rspec spec/requests
+      run: bundle exec rspec spec/requests
