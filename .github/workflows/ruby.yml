@@ -31,5 +31,15 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Build and test with Rake
+      env:
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+        RAILS_ENV: test
+        DB_NAME: Premium_backend
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        bundle exec rails db:create
+        bundle exec rails db:migrate
     - name: Run tests
       run: bundle exec rspec spec/requests
