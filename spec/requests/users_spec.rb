@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :request do
 
     it "비정상적인 로그인" do 
       post user_session_path, params: { "user": { "email": "Tutor3@test.com", "password": "passwo12312rd1111" } }
-      expect(response).to have_http_status(404)
+      expect(response.request.flash.alert).to eq("이메일 또는 비밀번호가 올바르지 않습니다.")
     end
   end
 

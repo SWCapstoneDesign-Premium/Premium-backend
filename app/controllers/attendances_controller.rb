@@ -72,6 +72,10 @@ class AttendancesController < ApiController
   private
 
 	def load_project
-		@project = Project.find(params[:project_id])
+    begin
+      @project = Project.find(params[:project_id])
+    rescue => exception
+      render json: { errors: "프로젝트가 존재하지 않습니다"}, status: :not_found      
+    end
 	end
 end

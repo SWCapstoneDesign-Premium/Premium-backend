@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Projects", type: :request do
+  
+
   let(:tutor) { FactoryGirl.create(:tutor) }
   
   let(:token) do
@@ -8,6 +10,8 @@ RSpec.describe "Projects", type: :request do
     post user_session_path, params: {"user": { "email": tutor.email, "password": "password"}}
     token = ActiveSupport::JSON.decode(response.body)["token"]
   end
+  
+  
 
   5.times do |i|
     let("project#{i}") { FactoryGirl.create(:project) }
@@ -61,4 +65,41 @@ RSpec.describe "Projects", type: :request do
 		end
 
 	end
+
+  describe "프로젝트 일정 생성" do
+    before :all do
+      @book = FactoryGirl.create(:book)
+      @book.crawl_book_index
+      @arr = []
+      @book.chapters.each do |chapter|
+        @arr.push({"weight": 1, "id": chapter.id})
+      end
+      @option_param = {
+        "option": {
+          "options": @arr
+        }
+      }
+      @project = FactoryGirl.create(:project)
+      @tutor = FactoryGirl.create(:tutor)
+      @project.update!(book_id: @book.id, tutor_id: @tutor.id)
+      post user_session_path, params: {"user": { "email": @tutor.email, "password": "password"}}
+      @token = ActiveSupport::JSON.decode(response.body)["token"]
+      post options_path, params: @option_param, headers: {"Authorization": @token}
+
+    end
+    
+    context "정상적인 일정 생성" do
+      it "휴식 포함 일정 생성" do
+        @project.update(tutor: @tutor)
+        get project_create_schedule_path(@tutor.projects.first.id), params: { project_id: @tutor.projects.first.id, rest: 1 }, headers: {"Authorization": @token}
+        expect(response).to have_http_status(200)
+      end
+
+      it "휴식 제외 일정 생성" do
+        @project.update(tutor: @tutor)
+        get project_create_schedule_path(@tutor.projects.first.id), params: { project_id: @tutor.projects.first.id, rest: 0 }, headers: {"Authorization": @token}
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 end
