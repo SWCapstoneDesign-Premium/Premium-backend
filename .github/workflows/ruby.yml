@@ -80,6 +80,10 @@ jobs:
         unzip tmp.zip && rm -rf tmp.zip
         sudo mv chromedriver /usr/local/bin
         
+    - name: Asset precompile
+      run: |
+        bundle exec rails assets:precompile
+        
     - name: Run tests
       env:
         PGHOST: 127.0.0.1
