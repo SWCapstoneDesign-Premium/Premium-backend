@@ -55,6 +55,7 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
         DB_NAME: Premium_backend
+        DB_USER_NAME: postgres
       run: |
         sudo apt-get -yqq install libpq-dev
         sudo service postgresql restart
