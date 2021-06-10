@@ -44,7 +44,7 @@ jobs:
         DB_NAME: Premium_backend
       run: |
         sudo apt-get -yqq install libpq-dev
-        sudo service postgresql start
+        sudo service postgresql restart
         bundle exec rails db:create
         bundle exec rails db:migrate
     - name: Run tests
