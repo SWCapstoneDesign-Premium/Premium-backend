@@ -13,6 +13,14 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  PGHOST: 127.0.0.1
+  PGUSER: postgres
+  RAILS_ENV: test
+  DB_NAME: Premium_backend
+  DB_USER_NAME: postgres
+  DB_USER_PASSWD: postgres
+
 jobs:
   test:
 
@@ -63,13 +71,6 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build and test with Rake
-      env:
-        PGHOST: 127.0.0.1
-        PGUSER: postgres
-        RAILS_ENV: test
-        DB_NAME: Premium_backend
-        DB_USER_NAME: postgres
-        DB_USER_PASSWD: postgres
       run: |
         bundle exec rails db:create
         bundle exec rails db:migrate
@@ -86,12 +87,6 @@ jobs:
         
     - name: Run tests
       env:
-        PGHOST: 127.0.0.1
-        PGUSER: postgres
-        RAILS_ENV: test
-        DB_NAME: Premium_backend
-        DB_USER_NAME: postgres
-        DB_USER_PASSWD: postgres
         REDIS_HOST: localhost
         REDIS_PORT: 6379
         AWS_ACCESS_ID: ${{ secrets.AWS_ACCESS_ID }}
