@@ -38,6 +38,19 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps port 6379 on service container to the host
+          - 6379:6379
 
     steps:
     - uses: actions/checkout@v2
@@ -58,8 +71,6 @@ jobs:
         DB_USER_NAME: postgres
         DB_USER_PASSWD: postgres
       run: |
-        sudo apt-get -yqq install libpq-dev
-        sudo service postgresql restart
         bundle exec rails db:create
         bundle exec rails db:migrate
     - name: Run tests
@@ -70,4 +81,6 @@ jobs:
         DB_NAME: Premium_backend
         DB_USER_NAME: postgres
         DB_USER_PASSWD: postgres
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379
       run: bundle exec rspec spec/requests
