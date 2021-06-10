@@ -63,4 +63,11 @@ jobs:
         bundle exec rails db:create
         bundle exec rails db:migrate
     - name: Run tests
+      env:
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+        RAILS_ENV: test
+        DB_NAME: Premium_backend
+        DB_USER_NAME: postgres
+        DB_USER_PASSWD: postgres
       run: bundle exec rspec spec/requests
