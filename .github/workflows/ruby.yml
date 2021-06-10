@@ -78,7 +78,7 @@ jobs:
         mkdir -p /usr/local/bin
         wget -q -O tmp.zip https://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip
         unzip tmp.zip && rm -rf tmp.zip
-        mv chromedriver /usr/local/bin
+        sudo mv chromedriver /usr/local/bin
         
     - name: Run tests
       env:
