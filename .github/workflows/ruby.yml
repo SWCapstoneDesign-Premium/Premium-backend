@@ -16,7 +16,6 @@ on:
 env:
   PGHOST: 127.0.0.1
   PGUSER: postgres
-  RAILS_ENV: test
   DB_NAME: Premium_backend
   DB_USER_NAME: postgres
   DB_USER_PASSWD: postgres
@@ -71,16 +70,22 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build DB
+      env:
+        RAILS_ENV: test
       run: |
         bundle exec rails db:create
         bundle exec rails db:migrate
     - name: Download chromedriver
+      env:
+        RAILS_ENV: test
       run: |
         mkdir -p /usr/local/bin
         wget -q -O tmp.zip https://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip
         unzip tmp.zip && rm -rf tmp.zip
         sudo mv chromedriver /usr/local/bin
     - name: Run asset precompile
+      env:
+        RAILS_ENV: test
       run: |
         bundle exec rails assets:clean
         bundle exec rails assets:precompile
@@ -93,6 +98,7 @@ jobs:
         AWS_ACCESS_SECRET_KEY: ${{ secrets.AWS_ACCESS_SECRET_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_S3_END_POINT: ${{ secrets.AWS_S3_END_POINT }}
+        RAILS_ENV: test
       run: bundle exec rspec spec/requests
 
     - name: build result to slack
