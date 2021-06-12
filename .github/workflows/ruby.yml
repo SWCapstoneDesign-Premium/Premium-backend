@@ -19,6 +19,7 @@ env:
   DB_NAME: Premium_backend
   DB_USER_NAME: postgres
   DB_USER_PASSWD: postgres
+  PRODUCTION_RB : ${{ secrets.PRODUCTION_RB}}
 
 jobs:
   test:
@@ -101,6 +102,18 @@ jobs:
         RAILS_ENV: test
       run: bundle exec rspec spec/requests
 
+    - name: Setting production.rb
+      env:
+        RAILS_ENV: production
+      run: |
+        touch /config/deploy/production.rb
+        echo $PRODUCTION_RB >> /config/deploy/production.rb
+        cat /config/deploy/production.rb
+
+    - name: Deploy with capistrano
+      run: |
+        bundle exec cap production deploy
+
     - name: build result to slack
       uses: 8398a7/action-slack@v3
       with:
@@ -111,3 +124,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+    
