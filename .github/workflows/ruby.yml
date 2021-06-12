@@ -19,7 +19,6 @@ env:
   DB_NAME: Premium_backend
   DB_USER_NAME: postgres
   DB_USER_PASSWD: postgres
-  PRODUCTION_RB : ${{ secrets.PRODUCTION_RB}}
 
 jobs:
   test:
@@ -102,9 +101,17 @@ jobs:
         RAILS_ENV: test
       run: bundle exec rspec spec/requests
 
+    - name: Add SSH key
+      run: |
+        mkdir ~/.ssh
+        echo "${{ secrets.SSH_ACCESS_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_rsa
+        
     - name: Setting production.rb
       env:
-        RAILS_ENV: production
+        PRODUCTION_RB : ${{ secrets.PRODUCTION_RB }}
       run: |
         touch config/deploy/production.rb
         echo $PRODUCTION_RB >> config/deploy/production.rb
@@ -112,7 +119,7 @@ jobs:
 
     - name: Deploy with capistrano
       run: |
-        bundle exec cap production deploy
+        cap production deploy
 
     - name: build result to slack
       uses: 8398a7/action-slack@v3
