@@ -71,8 +71,6 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build DB
-      env:
-        RAILS_ENV: test
       run: |
         bundle exec rails db:create
         bundle exec rails db:migrate
@@ -106,9 +104,9 @@ jobs:
       env:
         RAILS_ENV: production
       run: |
-        touch /config/deploy/production.rb
-        echo $PRODUCTION_RB >> /config/deploy/production.rb
-        cat /config/deploy/production.rb
+        touch config/deploy/production.rb
+        echo $PRODUCTION_RB >> config/deploy/production.rb
+        cat config/deploy/production.rb
 
     - name: Deploy with capistrano
       run: |
