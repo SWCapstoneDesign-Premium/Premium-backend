@@ -19,6 +19,7 @@ env:
   DB_NAME: Premium_backend
   DB_USER_NAME: postgres
   DB_USER_PASSWD: postgres
+  
 
 jobs:
   test:
